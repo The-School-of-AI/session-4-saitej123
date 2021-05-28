@@ -1,26 +1,35 @@
 import random
 from decimal import *
 import math
-import cmath
 import inspect
 
 
 class Qualean:
-    def __init__(self, user_input):
-        if user_input not in [-1, 0, 1]:
+    def __init__(self, *args):
+
+        self.number = random.choice([-1, 0, 1])
+        self.value = round(self.number * (random.uniform(-1, 1)), 10)
+        if self.number not in [-1, 0, 1, -1.0]:
             raise ValueError("input is not in [-1,0,1]")
-        else:
-            self.user_choice = user_input
-            self.value = round(user_input * (random.uniform(-1, 1)), 10)
+        for arg in args:
+            if arg == 0:
+                self.number = 0
+                self.value = 0
+            if arg == 1:
+                self.number = 1                
+            if arg == -1.0:
+                self.number = -1
+            if arg not in [-1, 0, 1, -1.0]:
+                raise ValueError("input is not in [-1,0,1]")
 
     def __repr__(self):
-        return "Qualean: {0}".format(self.user_choice)
+        return "Qualean Class Instance"
 
     def return_qualean(self):
         return self.value
 
     def __str__(self):
-        return f"Qualean String for number: " + str(self.user_choice)
+        return f"Qualean String for number: " + str(self.number)
 
     def __add__(self, other):
         if isinstance(other, Qualean):
@@ -76,14 +85,13 @@ class Qualean:
     def get_item(self):
         return self.value
 
-    def __and__(self, other_object):
-        if not bool(self.value):
-            return False
+    def __and__(self, other):
+        if isinstance(other, Qualean) and other.value:
+            return bool(self.value and other.value)
+        if not isinstance(other, Qualean) and other:
+            return bool(self.value and other)
         else:
-            if isinstance(other_object, Qualean) and other_object.value:
-                return bool(self.value and other_object.value)
-            else:
-                return False
+            return False
 
     def __or__(self, other):
         if isinstance(other, Qualean):

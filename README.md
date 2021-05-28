@@ -1,8 +1,12 @@
 # epai3session4
 
 ## Results :
-All passed in local : 
-==============================43 passed, 1 warning in 4.51s =============================== 
+
+### **with 'import test_session4' this can be fixed but we are not suppose to change test file**
+=======================================short test summary info ==================================
+FAILED test_session4.py::test_function_count - NameError: name 'test_session4' is not defined
+FAILED test_session4.py::test_function_repeatations - NameError: name 'test_session4' is not defined
+================================2 failed, 40 passed, 1 warning in 4.33s===========================
 ## Numeric Types II
 
 1. Write a Qualean class that is inspired by Boolean+Quantum concepts. We can assign it only 3 possible real states. True, False, and Maybe (1, 0, -1) but it internally picks an imaginary state. The moment you assign it a real number, it immediately finds an imaginary number random.uniform(-1, 1) and multiplies with it and stores that number internally after using Bankers rounding to 10th decimal place. 
